@@ -10,7 +10,7 @@ RUN mkdir -p /tc/logs
 RUN mkdir -p /tc/data
 RUN mkdir -p /tc/bin
 
-ADD binaries/bin/worldserver /tc/bin
+ADD bin/worldserver /tc/bin
 
 WORKDIR /tc/bin
 
