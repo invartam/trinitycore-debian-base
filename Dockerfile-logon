@@ -1,18 +1,13 @@
-FROM debian:jessie
+FROM debian:latest
 
-RUN apt update
-RUN apt dist-upgrade -y
-RUN apt install -y libmysqlclient18 libssl1.0.0 libreadline5 zlib1g \
-    libncurses5 libbz2-1.0 libpthread-workqueue0 libace-6.2.8 pkg-config \
-    libace-6.2.8 mariadb-client
+RUN apt-get install -y libmysqlclient18 libssl1.0.0 libreadline5 libace-6.2.8 \
+    zlib1g libncurses5 libbz2-1.0 libpthread-workqueue0
 
-RUN mkdir -p /tc/logs
-RUN mkdir -p /tc/bin
+RUN mkdir -p /tc/logs /tc/etc /tc/bin /var/core
 
-ADD binaries/bin/authserver /tc/bin
+ADD binaries/bin/authserver /tc/bin/authserver
 
-WORKDIR /tc/bin
-
-EXPOSE 8085 7878
-VOLUME ["/tc/logs", "/tc/etc"]
+WORKDIR /tc
 CMD ["/tc/bin/authserver"]
+
+EXPOSE 3724
