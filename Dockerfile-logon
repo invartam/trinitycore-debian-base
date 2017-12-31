@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:jessie
 
 RUN apt-get install -y libmysqlclient18 libssl1.0.0 libreadline5 libace-6.2.8 \
     zlib1g libncurses5 libbz2-1.0 libpthread-workqueue0
