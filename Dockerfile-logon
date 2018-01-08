@@ -7,7 +7,7 @@ RUN apt-get update \
 
 RUN mkdir -p /tc/logs /tc/etc /tc/bin /var/core
 
-ADD binaries/bin/authserver /tc/bin/authserver
+ADD bin/authserver /tc/bin/authserver
 
 WORKDIR /tc
 CMD ["/tc/bin/authserver"]
