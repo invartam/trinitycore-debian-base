@@ -1,8 +1,8 @@
 FROM debian:jessie
 
 RUN apt-get update \
-    apt-get dist-upgrade \
-    apt-get install -y libmysqlclient18 libssl1.0.0 libreadline5 libace-6.2.8 \
+    && apt-get dist-upgrade \
+    && apt-get install -y libmysqlclient18 libssl1.0.0 libreadline5 libace-6.2.8 \
     zlib1g libncurses5 libbz2-1.0 libpthread-workqueue0
 
 RUN mkdir -p /tc/logs /tc/etc /tc/bin /var/core
