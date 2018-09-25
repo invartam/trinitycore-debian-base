@@ -4,16 +4,18 @@ RUN apt update
 RUN apt dist-upgrade -y
 RUN apt install -y libmysqlclient18 libssl1.0.0 libreadline5 zlib1g \
     libncurses5 libbz2-1.0 libpthread-workqueue0 libace-6.2.8 pkg-config \
-    libace-6.2.8 mariadb-client
+    libace-6.2.8 mariadb-client python3 supervisor
 
 RUN mkdir -p /tc/logs
 RUN mkdir -p /tc/data
 RUN mkdir -p /tc/bin
 
 ADD bin/worldserver /tc/bin
+ADD scripts/misc/world_api.py /tc/bin
+ADD image/supervisord.conf /tc/supervisord.conf
 
 WORKDIR /tc/bin
 
 EXPOSE 8085 7878
 VOLUME ["/tc/logs", "/tc/data", "/tc/etc"]
-CMD ["/tc/bin/worldserver"]
+CMD ["supervisord", "-c", "/tc/supervisord.conf", "-n"]
