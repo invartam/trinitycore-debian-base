@@ -16,6 +16,6 @@ ADD image/supervisord.conf /tc/supervisord.conf
 
 WORKDIR /tc/bin
 
-EXPOSE 8085 7878
+EXPOSE 8080 8085 7878
 VOLUME ["/tc/logs", "/tc/data", "/tc/etc"]
 CMD ["supervisord", "-c", "/tc/supervisord.conf", "-n"]
