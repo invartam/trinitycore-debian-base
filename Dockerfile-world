@@ -4,7 +4,7 @@ RUN apt update
 RUN apt dist-upgrade -y
 RUN apt install -y libmysqlclient18 libssl1.0.0 libreadline5 zlib1g \
     libncurses5 libbz2-1.0 libpthread-workqueue0 libace-6.2.8 pkg-config \
-    libace-6.2.8 mariadb-client python3 supervisor
+    libace-6.2.8 mariadb-client python3 supervisor net-tools
 
 RUN mkdir -p /tc/logs
 RUN mkdir -p /tc/data
