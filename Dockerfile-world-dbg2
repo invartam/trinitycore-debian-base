@@ -6,10 +6,11 @@ RUN apt install -y libmysqlclient18 libssl1.0.0 libreadline5 zlib1g \
     libncurses5 libbz2-1.0 libpthread-workqueue0 libace-6.2.8 pkg-config \
     libace-6.2.8 mariadb-client gdb
 
+ADD bin/worldserver /tc/bin/worldserver
 ADD bin/worldserver.dbg /tc/bin/worldserver.dbg
 
 WORKDIR /tc/bin
 
 EXPOSE 8085 7878
 VOLUME ["/tc/core"]
-CMD ["gdb", "/tc/bin/worldserver.dbg", "/tc/core/core.worldserver"]
+CMD ["gdb", "--symbols=/tc/bin/worldserver.dbg", "--core=/tc/core/core.worldserver", "--exec=/tc/bin/worldserver"]
